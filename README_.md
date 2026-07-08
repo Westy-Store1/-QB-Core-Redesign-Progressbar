@@ -1,127 +1,56 @@
-# Progressbar
+# Progressbar Redesign ┃ M-Westy 
 
-Dependency for creating progressbars in QB-Core.
+<img width="502" height="159" alt="3414690E-B9C2-48DF-A330-973976E6DB85" src="https://github.com/user-attachments/assets/a0126819-69dc-4786-bbd6-086835b47672" />
 
-# Usage
+[Português](#português) | [English](#english)
 
-## QB-Core Functions
+---
 
-### Client
+## Português
 
-- QBCore.Functions.Progressbar(**name**: string, **label**: string, **duration**: number, **useWhileDead**: boolean, **canCancel**: boolean, **disableControls**: table, **animation**: table, **prop**: table, **propTwo**: table, **onFinish**: function, **onCancel**: function)
-  > Create a new progressbar from the built in qb-core functions.<br>
-  > **Example:**
-  > ```lua
-  >QBCore.Functions.Progressbar("random_task", "Doing something", 5000, false, true, {
-  >    disableMovement = false,
-  >    disableCarMovement = false,
-  >    disableMouse = false,
-  >    disableCombat = true,
-  >}, {
-  >    animDict = "mp_suicide",
-  >    anim = "pill",
-  >    flags = 49,
-  >}, {}, {}, function()
-  >    -- Done
-  >end, function()
-  >    -- Cancel
-  >end)
-  > ```
+Progressbar Redesign personalizada da versão original do QB-Core.
 
-## Exports
+### 🎨 Diferenças Visuais
 
-### Client
+*   **Layout Segmentado**: Substituição da barra contínua original por um layout moderno de 5 segmentos.
+*   **Cores e Efeitos**: Utiliza azul marinho (`#042940`) para o fundo e verde limão (`#9FC131`) para o progresso, com um brilho suave nos segmentos ativos.
+*   **Ícone Octogonal**: Adicionado um badge em formato de octógono à esquerda contendo um ícone de loading giratório.
+*   **Tipografia**: Utiliza a fonte "Poppins" do Google Fonts com uma linha de destaque abaixo do texto.
 
-- Progress(**data**: string, **handler**: function)
-  > Creates a new progress bar directly from the export, always use the built in qb-core function if possible.<br>
-  > **Example:**
-  > ```lua
-  >exports['progressbar']:Progress({
-  >    name = "random_task",
-  >    duration = 5000,
-  >    label = "Doing something",
-  >    useWhileDead = false,
-  >    canCancel = true,
-  >    controlDisables = {
-  >        disableMovement = false,
-  >        disableCarMovement = false,
-  >        disableMouse = false,
-  >        disableCombat = true,
-  >    },
-  >    animation = {
-  >        animDict = "mp_suicide",
-  >        anim = "pill",
-  >        flags = 49,
-  >    },
-  >    prop = {},
-  >    propTwo = {}
-  >}, function(cancelled)
-  >    if not cancelled then
-  >        -- finished
-  >    else
-  >        -- cancelled
-  >    end
-  >end)
-  > ```
-  > **Props Example:**
-  > ```lua
-  >exports['progressbar']:Progress({
-  >    name = "random_task",
-  >    duration = 5000,
-  >    label = "Doing something",
-  >    useWhileDead = false,
-  >    canCancel = true,
-  >    controlDisables = {
-  >        disableMovement = false,
-  >        disableCarMovement = false,
-  >        disableMouse = false,
-  >        disableCombat = true,
-  >    },
-  >    animation = {
-  >        animDict = "missheistdockssetup1clipboard@base",
-  >        anim = "pill",
-  >        flags = 49,
-  >    },
-  >    prop = {
-  >      model = 'prop_notepad_01',
-  >      bone = 18905,
-  >      coords = vec3(0.1, 0.02, 0.05),
-  >      rotation = vec3(10.0, 0.0, 0.0),
-  >    },
-  >    propTwo = {
-  >      model = 'prop_pencil_01',
-  >      bone = 58866,
-  >      coords = vec3(0.11, -0.02, 0.001),
-  >      rotation = vec3(-120.0, 0.0, 0.0),
-  >    }
-  >}, function(cancelled)
-  >    if not cancelled then
-  >        -- finished
-  >    else
-  >        -- cancelled
-  >    end
-  >end)
-  > ```
+### ⚡ Melhorias de Desempenho
 
-  - isDoingSomething()
-    > Returns a boolean (true/false) depending on if a progressbar is present.<br>
-    > **Example:**
-    > ```lua
-    > local busy = exports["progressbar"]:isDoingSomething()
-    > ```
+*   **Cache de Controles**: Em vez de percorrer tabelas complexas a cada frame, os IDs dos controles são salvos em uma lista simples quando a ação começa.
+*   **Fusão de Threads**: Mesclou as duas threads (verificação de teclas e bloqueio de controles) em um único loop unificado (`Wait(0)`) para reduzir o uso de CPU.
 
-  - ProgressWithStartEvent(**data**: table, **start**: function, **finish**: function)
-    > Works like a normal progressbar, the data parameter should be the same as the data passed into the `Progress` export above.<br>
-    > The start function gets triggered upon the start of the progressbar.<br>
-    > The finish handler is the same as the `handler` parameter in the `Progress` export above.
+---
 
-  - ProgressWithTickEvent(**data**: table, **tick**: function, **finish**: function)
-    > Works like a normal progressbar, the data parameter should be the same as the data passed into the `Progress` export above.<br>
-    > The tick function gets triggered every frame while the progressbar is active.<br>
-    > The finish handler is the same as the `handler` parameter in the `Progress` export above.
+## English
 
-  - ProgressWithTickEvent(**data**: table, **start**: function, **tick**: function, **finish**: function)
-    > Works like a normal progressbar, the data parameter should be the same as the data passed into the `Progress` export above.<br>
-    > The start function gets triggered upon the start of the progressbar.<br>
-    > The tick function gets triggered every frame while the progressbar is active.<br>
-    > The finish handler is the same as the `handler` parameter in the `Progress` export above.
+Custom progress bar redesign based on the original QB-Core version.
+
+### 🎨 Visual Differences
+
+*   **Segmented Layout**: Replaced the original single continuous bar with a modern 5-segment layout.
+*   **Colors & Effects**: Uses Navy (`#042940`) for background and Lime Green (`#9FC131`) for progress, with a subtle glow effect on active segments.
+*   **Octagon Icon**: Added a custom octagon-shaped badge on the left containing a spinning loading icon.
+*   **Typography**: Uses "Poppins" from Google Fonts with a clean bottom accent line under the label.
+
+### ⚡ Performance Improvements
+
+*   **Cached Control Disabling**: Instead of checking and looping over tables every single frame, control IDs are cached in a simple flat list once the action starts.
+*   **Thread Merging**: Merged the dual threads (input checker and control disabler) into a single, unified game loop (`Wait(0)`) to reduce CPU usage.
+
+
+### ➤ Acesse agora: https://discord.gg/pV4cqzxJNg .
+
+### Redesign desenvolvido por M-Westy © 2026. Todos os direitos reservados.
+### Redesign developed by M-Westy © 2026. All rights reserved.
+
+
+## Créditos
+Este projeto é um redesign visual e otimização do recurso original do ecossistema [QB-Core Framework](https://github.com/qbcore-framework).
+*   Recurso original: [qb-progressbar](https://github.com/qbcore-framework/progressbar)
+
+## Credits
+This project is a visual redesign and performance optimization of the original resource from the [QB-Core Framework](https://github.com/qbcore-framework) ecosystem.
+*   Original resource: [qb-progressbar](https://github.com/qbcore-framework/progressbar)
