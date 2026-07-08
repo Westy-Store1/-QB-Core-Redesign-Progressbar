@@ -1,6 +1,7 @@
 # Progressbar Redesign ┃ M-Westy 
 
-<img width="502" height="159" alt="3414690E-B9C2-48DF-A330-973976E6DB85" src="https://github.com/user-attachments/assets/a0126819-69dc-4786-bbd6-086835b47672" />
+<img width="502" height="159" alt="3414690E-B9C2-48DF-A330-973976E6DB85" src="https://github.com/user-attachments/assets/e0bb67dd-7ab1-42e1-b681-b1bb97311eb1" />
+
 
 [Português](#português) | [English](#english)
 
