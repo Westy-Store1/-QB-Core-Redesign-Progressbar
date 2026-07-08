@@ -1,4 +1,4 @@
-# Progressbar Redesign ┃ M-Westy 
+# Progressbar Redesign [QBCore] ┃ M-Westy 
 
 <img width="502" height="159" alt="3414690E-B9C2-48DF-A330-973976E6DB85" src="https://github.com/user-attachments/assets/e0bb67dd-7ab1-42e1-b681-b1bb97311eb1" />
 
